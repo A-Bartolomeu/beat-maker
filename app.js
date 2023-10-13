@@ -57,14 +57,18 @@ class DrumKit {
     }
   }
   updateBtn() {
+    const playIcon = this.playBtn.querySelector("#playIcon");
     if (!this.isPlaying) {
-      this.playBtn.innerText = "Stop";
+      playIcon.classList.remove("fa-play");
+      playIcon.classList.add("fa-pause");
       this.playBtn.classList.add("active");
     } else {
-      this.playBtn.innerText = "Play";
+      playIcon.classList.remove("fa-pause");
+      playIcon.classList.add("fa-play");
       this.playBtn.classList.remove("active");
     }
   }
+
   changeSound(e) {
     const selectionName = e.target.name;
     const selectionValue = e.target.value;

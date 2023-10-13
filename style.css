@@ -8,6 +8,7 @@ body {
   font-family: sans-serif;
   display: flex;
   justify-content: center;
+  background-color: #08042a;
 }
 
 i,
@@ -23,24 +24,33 @@ svg {
   margin: 1rem 0.5rem;
   border-radius: 0.5rem;
   cursor: pointer;
+  opacity: 0.2;
+  border: 0.5px solid none;
+  border-radius: 1rem;
 }
 .kick-pad {
-  background: rgb(160, 211, 224);
+  background: #8236fc;
 }
 .snare-pad {
-  background: rgb(224, 160, 208);
+  background: #41e8d3;
 }
 .hihat-pad {
-  background: rgb(224, 194, 160);
+  background: #d8f600;
 }
 .kick-pad.active {
-  background: rgb(59, 197, 231);
+  opacity: 1;
+  box-shadow: inset 0px 0px 10px 2px #d1b4ff, inset 0px 0px 20px 2px #8236fc,
+    0px 0px 10px 2px #d1b4ff, 0px 0px 20px 3px #872ed5, 0px 0px 30px 3px #8236fc;
 }
 .snare-pad.active {
-  background: rgb(218, 58, 178);
+  opacity: 1;
+  box-shadow: inset 0px 0px 10px 2px #b7f8ef, inset 0px 0px 20px 2px #41e8d3,
+    0px 0px 10px 2px #b7f8ef, 0px 0px 20px 3px #32c999, 0px 0px 30px 3px #41e8d3;
 }
 .hihat-pad.active {
-  background: rgb(241, 158, 64);
+  opacity: 1;
+  box-shadow: inset 0px 0px 10px 2px #ecf69d, inset 0px 0px 20px 2px #d8f600,
+    0px 0px 10px 2px #ecf69d, 0px 0px 20px 3px #afbb08, 0px 0px 30px 3px #d8f600;
 }
 
 .sequencer {
@@ -71,6 +81,7 @@ svg {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: white;
   min-width: 25vw;
   flex: 1;
   gap: 0.5rem;
@@ -78,12 +89,19 @@ svg {
 
 .controls button {
   padding: 1rem;
-  border: none;
-  background: rgb(88, 88, 88);
+  border-radius: 2rem;
+  border-color: transparent;
+  background: #0b0432;
+  box-shadow: -3px -3px 10px #100855, 3px 3px 10px #000000;
   color: white;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.5s ease;
+}
+.controls button:hover {
+  box-shadow: inset 2px 2px 5px #000000, inset -3px -3px 5px #100855;
+  color: white;
+  text-shadow: 0 0 15px, 0 0 5px white;
 }
 
 .pad {
@@ -91,50 +109,72 @@ svg {
 }
 
 .play {
-  padding: 1rem 2rem;
-  font-size: 1.5rem;
-  background: rgb(88, 88, 88);
+  padding: 1rem;
+  border-radius: 2rem;
+  border-color: transparent;
+  background: #0b0432;
+  box-shadow: -3px -3px 10px #100855, 3px 3px 10px #000000;
   color: white;
   cursor: pointer;
   margin-top: 3rem;
 }
+.fas {
+  font-size: 1.5rem;
+}
+.play:hover {
+  box-shadow: inset 2px 2px 5px #000000, inset -3px -3px 5px #100855;
+  color: white;
+  text-shadow: 0 0 15px, 0 0 5px white;
+}
 
 select {
   padding: 1rem;
-  font-size: 1rem;
+  min-width: 10rem;
+  background: #0b0432;
+  border-radius: 2rem;
+  border-color: transparent;
+  box-shadow: -3px -3px 10px #100855, 3px 3px 10px #000000;
+  color: white;
+}
+select:focus {
+  border-color: #100855;
+  outline: none;
 }
 
 .mute.active {
-  background: rgb(182, 182, 182);
+  box-shadow: inset 2px 2px 5px #000000, inset -3px -3px 5px #100855;
+  color: white;
+  text-shadow: 0 0 15px, 0 0 5px white;
 }
 
 .tempo {
-  margin: 3rem;
+  margin: 2rem;
   width: 30%;
 }
 .tempo-slider {
   -webkit-appearance: none;
   appearance: none;
-  padding: 0.2rem;
-  margin: 1rem 0rem;
   width: 100%;
   position: relative;
-  background: rgb(88, 88, 88);
+  background: #0b0432;
+  box-shadow: inset 2px 2px 5px #000000, inset -3px -3px 5px #100855;
   cursor: pointer;
   border-radius: 1rem;
 }
 .tempo p {
-  font-size: 1.5rem;
-  margin: 2rem;
+  font-size: 1rem;
+  color: white;
+  margin: 0.5rem;
   text-align: center;
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  height: 1rem;
-  width: 1rem;
+  height: 0.8rem;
+  width: 0.8rem;
   border-radius: 1rem;
-  background: red;
+  background: white;
+  box-shadow: 0 0 15px, 0 0 5px white;
   cursor: pointer;
 }
 
@@ -144,5 +184,35 @@ input[type="range"]::-webkit-slider-thumb {
   }
   to {
     transform: scale(1.2);
+  }
+}
+
+@media (max-width: 576px) {
+  .kick-track,
+  .snare-track,
+  .hihat-track {
+    flex-direction: column;
+  }
+  .kick-pad,
+  .snare-pad,
+  .hihat-pad {
+    width: 2rem;
+    height: 2rem;
+    margin: 0.5rem 0.5rem;
+  }
+  .kick,
+  .snare,
+  .hihat {
+    margin-left: 0rem;
+    margin-top: 1.5rem;
+  }
+  .sequencer {
+    min-height: 80vh;
+  }
+  .controls {
+    gap: 1.5rem;
+  }
+  .tempo {
+    width: 50%;
   }
 }
